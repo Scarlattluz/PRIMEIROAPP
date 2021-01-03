@@ -1,40 +1,34 @@
 import React, {Component} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, Button} from 'react-native';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      nome: '',
+    };
+
+    this.entrar = this.entrar.bind(this);
+  }
+
+  entrar(nome) {
+    this.setState({
+      nome: nome,
+    });
+  }
+
   render() {
-    let nome = 'Scar';
-
     return (
-      <View>
-        <Text>Olá 2021!!!!</Text>
-        <Text>Primeiro aplicativo em React Native</Text>
-        <Text style={{color: '#FF0000', fontSize: 25, margin: 15}}>
-          Teste de estilo
+      <View style={{marginTop: 20}}>
+        <Button title="Entrar" onPress={() => this.entrar('Scar')} />
+
+        <Text style={{fontSize: 23, color: 'blue', textAlign: 'center'}}>
+          {this.state.nome}
         </Text>
-
-        <Text style={{fontSize: 30}}>{nome}</Text>
-
-        <Jobs largura={100} altura={200} nome="Steve Jobs" />
       </View>
     );
   }
 }
 
 export default App;
-
-class Jobs extends Component {
-  render() {
-    let img = 'https://sujeitoprogramador.com/steve.png';
-
-    return (
-      <View>
-        <Image
-          source={{uri: img}}
-          style={{width: this.props.largura, height: this.props.altura}}
-        />
-        <Text> {this.props.nome} </Text>
-      </View>
-    );
-  }
-}
