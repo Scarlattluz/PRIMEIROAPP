@@ -4,7 +4,6 @@ import {View, Text, Image} from 'react-native';
 class App extends Component {
   render() {
     let nome = 'Scar';
-    let img = 'https://sujeitoprogramador.com/steve.png';
 
     return (
       <View>
@@ -14,12 +13,28 @@ class App extends Component {
           Teste de estilo
         </Text>
 
-        <Image source={{uri: img}} style={{width: 300, height: 300}} />
-
         <Text style={{fontSize: 30}}>{nome}</Text>
+
+        <Jobs largura={100} altura={200} nome="Steve Jobs" />
       </View>
     );
   }
 }
 
 export default App;
+
+class Jobs extends Component {
+  render() {
+    let img = 'https://sujeitoprogramador.com/steve.png';
+
+    return (
+      <View>
+        <Image
+          source={{uri: img}}
+          style={{width: this.props.largura, height: this.props.altura}}
+        />
+        <Text> {this.props.nome} </Text>
+      </View>
+    );
+  }
+}
